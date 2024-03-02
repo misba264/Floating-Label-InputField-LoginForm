@@ -2,32 +2,52 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .button-primary {
+    @apply flex place-items-center text-neutral-white-base font-semibold rounded-lg;
   }
+  .button-secondary {
+    @apply border-primary-base bg-neutral-white-base border-[2px] flex place-items-center text-secondary-base font-semibold rounded-lg;
+  }
+  .heading-primary {
+    @apply font-semibold text-5xl text-secondary-base leading-tight  ;
+
+    /* @screen sm:md-max{
+      text-[32px]
+    } */
+
+    /* @screen sm:md-max{
+      font-semibold
+    } */
+  }
+  /* .card-container {
+    @apply transition duration-300 border-solid border-border-light bg-screen-grey flex flex-col gap-[60px] items-start pt-8 pb-6 px-5 border-[0.5px] rounded-[8px] cursor-pointer hover:bg-primary-base hover:text-white;
+    
+  } */
+  /* @responsive {
+    .button-size-small {
+      @apply py-[14px] px-[30px] gap-10;
+    }
+  } */
+
 }
+
+
+.floating-input > input::placeholder {
+  color: transparent;
+}
+
+.floating-input > input:focus,
+.floating-input > input:not(:placeholder-shown) {
+  @apply pt-8;
+}
+
+.floating-input > input:focus ~ label,
+.floating-input > input:not(:placeholder-shown) ~ label {
+  @apply opacity-75 scale-75 -translate-y-3 translate-x-1;
+}
+
+/* .invisible {
+  visibility: hidden;
+} */
+
